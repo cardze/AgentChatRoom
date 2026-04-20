@@ -4,7 +4,7 @@ from agent_chat_room import AgentChatRoom
 
 
 class TestAgentChatRoom(unittest.TestCase):
-    def test_public_and_private_chat_are_stored(self):
+    def test_public_and_private_messages_storage_and_content(self):
         chat = AgentChatRoom(["alpha", "beta", "gamma"])
 
         chat.post_public("hello everyone")
