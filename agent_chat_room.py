@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import datetime
-from typing import Dict, List, Tuple
+from typing import Dict, List, Optional, Tuple
 
 
 @dataclass(frozen=True)
@@ -64,12 +64,18 @@ class AgentChatRoom:
         room_key = tuple(sorted((self._current_agent, peer)))
         return list(self._private_rooms.get(room_key, []))
 
-    def _store_message(self, room: List[Message], content: str) -> Message:
+    def _store_message(
+        self, room: List[Message], content: str, timestamp: Optional[datetime] = None
+    ) -> Message:
         text = content.strip()
         if not text:
             raise ValueError("Message content cannot be empty")
 
-        message = Message(sender=self._current_agent, content=text, timestamp=datetime.now())
+        message = Message(
+            sender=self._current_agent,
+            content=text,
+            timestamp=timestamp or datetime.now(),
+        )
         room.append(message)
         return message
 
