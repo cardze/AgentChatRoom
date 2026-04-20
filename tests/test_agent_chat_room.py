@@ -39,6 +39,13 @@ class TestAgentChatRoom(unittest.TestCase):
         with self.assertRaises(ValueError):
             chat.switch_agent("unknown")
 
+    def test_invalid_initialization_raises_errors(self):
+        with self.assertRaises(ValueError):
+            AgentChatRoom(["alpha"])
+
+        with self.assertRaises(ValueError):
+            AgentChatRoom(["alpha", "alpha", " "])
+
 
 if __name__ == "__main__":
     unittest.main()

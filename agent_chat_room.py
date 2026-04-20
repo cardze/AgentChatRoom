@@ -98,7 +98,7 @@ def run_cli() -> None:
     except ValueError as error:
         raise ValueError(
             f"{error}. Please provide agent names separated by commas (example: alpha,beta,gamma)."
-        )
+        ) from error
 
     print("\nType /help to view commands.")
 
