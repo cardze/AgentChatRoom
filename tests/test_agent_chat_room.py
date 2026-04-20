@@ -25,6 +25,7 @@ class TestAgentChatRoom(unittest.TestCase):
 
         messages = chat.private_messages("alpha")
         self.assertEqual([msg.content for msg in messages], ["alpha to beta", "beta to alpha"])
+        self.assertEqual([msg.sender for msg in messages], ["alpha", "beta"])
 
     def test_invalid_actions_raise_errors(self):
         chat = AgentChatRoom(["alpha", "beta"])
