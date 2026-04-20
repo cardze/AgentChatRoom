@@ -95,9 +95,9 @@ def run_cli() -> None:
     raw = input("> ").strip()
     try:
         chat = AgentChatRoom(raw.split(","))
-    except ValueError:
+    except ValueError as error:
         raise ValueError(
-            "Please provide at least two unique non-empty agent names separated by commas."
+            f"{error}. Please provide agent names separated by commas (example: alpha,beta,gamma)."
         )
 
     print("\nType /help to view commands.")
