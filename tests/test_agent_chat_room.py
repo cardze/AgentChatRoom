@@ -3,7 +3,7 @@ import unittest
 from agent_chat_room import AgentChatRoom
 
 
-class AgentChatRoomTest(unittest.TestCase):
+class TestAgentChatRoom(unittest.TestCase):
     def test_public_and_private_chat_are_stored(self):
         chat = AgentChatRoom(["alpha", "beta", "gamma"])
 
