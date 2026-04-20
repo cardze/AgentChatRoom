@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Dict, List, Tuple
 
 
@@ -69,7 +69,11 @@ class AgentChatRoom:
         if not text:
             raise ValueError("Message content cannot be empty")
 
-        message = Message(sender=self._current_agent, content=text, timestamp=datetime.now())
+        message = Message(
+            sender=self._current_agent,
+            content=text,
+            timestamp=datetime.now(timezone.utc),
+        )
         room.append(message)
         return message
 

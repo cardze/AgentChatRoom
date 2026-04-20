@@ -16,7 +16,7 @@ class TestAgentChatRoom(unittest.TestCase):
         self.assertEqual(len(chat.private_messages("beta")), 1)
         self.assertEqual(chat.private_messages("beta")[0].sender, "alpha")
 
-    def test_switching_agent_reads_same_private_room(self):
+    def test_private_room_persists_across_agent_switches(self):
         chat = AgentChatRoom(["alpha", "beta"])
         chat.send_private("beta", "alpha to beta")
 
